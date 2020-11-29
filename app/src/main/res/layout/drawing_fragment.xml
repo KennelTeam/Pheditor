@@ -9,8 +9,8 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="374dp"
-        android:layout_height="648dp"
+        android:layout_width="361dp"
+        android:layout_height="528dp"
         android:contentDescription="TODO"
         android:scaleType="fitCenter"
         app:layout_constraintBottom_toBottomOf="parent"
