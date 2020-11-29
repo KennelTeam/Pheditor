@@ -13,10 +13,8 @@ class SideTick(
     view: View,
     private val orientation: Int,
     private val id: Int) {
-    private var dl = 0
-    private var dt = 0
-    private var dr = 0
-    private var db = 0
+    private var dx = 0f
+    private var dy = 0f
 
     init {
         view.setOnTouchListener { v, event ->
@@ -26,21 +24,17 @@ class SideTick(
 
     fun procMove(view: View, event: MotionEvent): Boolean {
         if (event.action == MotionEvent.ACTION_DOWN) {
-            dl = floor(event.rawX - view.left).toInt()
-            dr = floor(event.rawX - view.right).toInt()
-            dt = floor(event.rawY - view.top).toInt()
-            db = floor(event.rawY - view.bottom).toInt()
+            dx = event.rawX - view.x
+            dy = event.rawY - view.y
 
         } else if (event.action == MotionEvent.ACTION_MOVE) {
-            Log.i("Nnab", "Event: ${event.rawX}, ${event.rawY}")
-            val a: Int
-            val b: Int
+            val nval: Float
             if (orientation == HORIZONTAL) {
-                a = floor(event.rawX - dl).toInt()
-                b = floor(event.rawX - dr).toInt()
+                nval = event.rawX - dx
+                view.x = nval
             } else {
-                a = floor(event.rawY - dt).toInt()
-                b = floor(event.rawY - db).toInt()
+                nval = event.rawY - dy
+                view.y = nval
             }
             //emit(MoveTick(id, view, a, b))
         }
