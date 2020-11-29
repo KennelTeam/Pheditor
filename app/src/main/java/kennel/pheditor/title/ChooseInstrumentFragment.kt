@@ -70,6 +70,11 @@ class ChooseInstrumentFragment: Fragment() {
             changeFragment(R.id.action_chooseInstrument_to_imageFilter)
         }
 
+        val drawingFragmentButton : ImageButton = binding.drawButton
+        drawingFragmentButton.setOnClickListener {
+            changeFragment(R.id.action_chooseInstrument_to_drawingFragment)
+        }
+
         val saveButton : Button = binding.saveButton
         saveButton.setOnClickListener {
             if(GlobalVars.image != null){

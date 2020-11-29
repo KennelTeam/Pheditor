@@ -16,9 +16,14 @@
         tools:layout="@layout/image_filter"/>
     <fragment
         android:id="@+id/stickerFragment"
-        android:name="kennel.pheditor.stickers.Stickers"
+        android:name="kennel.pheditor.stickers.StickersFragment"
         android:label="StickerFragment"
-        tools:layout="@layout/stickers"/>
+        tools:layout="@layout/stickers_fragment"/>
+    <fragment
+        android:id="@+id/drawingFragment"
+        android:name="kennel.pheditor.drawing.DrawingFragment"
+        android:label="DrawingFragment"
+        tools:layout="@layout/drawing_fragment"/>
 
     <fragment
         android:id="@+id/chooseInstrument"
@@ -34,6 +39,9 @@
         <action
             android:id="@+id/action_chooseInstrument_to_imageFilter"
             app:destination="@id/imageFilter" />
+        <action
+            android:id="@+id/action_chooseInstrument_to_drawingFragment"
+            app:destination="@id/drawingFragment" />
     </fragment>
 
     <fragment
