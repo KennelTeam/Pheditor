@@ -9,4 +9,5 @@
     <string name="save_image">Save</string>
     <string name="null_image_warning">You have not chosen any image!</string>
     <string name="folder_name">KennelPheditor</string>
+    <string name="image_handlers">Your image is being handled now...</string>
 </resources>
