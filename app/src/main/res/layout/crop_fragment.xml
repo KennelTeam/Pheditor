@@ -9,5 +9,22 @@
         android:layout_width="match_parent"
         android:id="@+id/cropMainHandler">
 
+        <Button
+            android:id="@+id/saveAndBack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Save and go back"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <View
+            android:id="@+id/view"
+            android:layout_width="100dp"
+            android:layout_height="4dp"
+            android:background="#9A5454"
+            tools:layout_editor_absoluteX="116dp"
+            tools:layout_editor_absoluteY="103dp" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
