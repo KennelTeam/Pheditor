@@ -1,21 +1,20 @@
 package kennel.pheditor.title
 
+import kennel.pheditor.GlobalVars
 import android.os.Bundle
 import android.app.Activity
-import android.content.pm.PackageManager
-import android.os.Build
-import android.support.v4.app.*
 import android.content.Intent
+import android.graphics.drawable.Drawable
+import android.media.Image
+import android.net.Uri
 import android.view.LayoutInflater
 import android.view.View
-import kotlinx.android.synthetic.main.activity_main.*
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageButton
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
 import androidx.navigation.fragment.findNavController
 import kennel.pheditor.R
 import kennel.pheditor.databinding.ChooseInstrumentFragmentBinding
@@ -27,13 +26,16 @@ class ChooseInstrumentFragment: Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        print("There")
         binding = DataBindingUtil.inflate(
             inflater,
             R.layout.choose_instrument_fragment,
             container,
             false
         )
+
+        if(GlobalVars.image != null){
+            binding.imageView.setImageDrawable(GlobalVars.image)
+        }
 
         val img_pick_btn : Button = binding.imgPickBtn
 
@@ -70,7 +72,17 @@ class ChooseInstrumentFragment: Fragment() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         if (resultCode == Activity.RESULT_OK && requestCode == IMAGE_PICK_CODE){
             binding.imageView.setImageURI(data?.data)
-            val a : Toast = Toast.makeText(context, "Image was successfully uploaded!", Toast.LENGTH_LONG)
+            val infoToast : Toast = Toast.makeText(context, "Image was successfully uploaded!", Toast.LENGTH_LONG)
+            infoToast.show()
+
+
+            if(data != null){
+                if(data.data != null){
+                    val inputStream =  activity?.contentResolver?.openInputStream(data.data!!)
+                    GlobalVars.image = Drawable.createFromStream(inputStream, data.data!!.toString())
+                }
+            }
+
         }
     }
 }

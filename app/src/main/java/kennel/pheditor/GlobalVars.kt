@@ -1,7 +1,8 @@
 package kennel.pheditor
 
+import android.graphics.drawable.Drawable
 import android.media.Image
 
 object GlobalVars {
-    lateinit var image: Image
+    var image: Drawable? = null
 }

@@ -47,9 +47,5 @@
         android:id="@+id/infoFragment"
         android:name="kennel.pheditor.title.InfoFragment"
         android:label="InfoFragment"
-        tools:layout="@layout/info_fragment">
-        <action
-            android:id="@+id/action_infoFragment_to_titleFragment"
-            app:destination="@id/titleFragment" />
-    </fragment>
+        tools:layout="@layout/info_fragment"/>
 </navigation>
