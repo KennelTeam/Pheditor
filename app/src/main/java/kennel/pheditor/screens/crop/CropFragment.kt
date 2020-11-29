@@ -32,51 +32,13 @@ class CropFragment: Fragment() {
         return binding.root
     }
 
-    @SuppressLint("ClickableViewAccessibility")
     private fun mainSetup() {
         val clip = ClipData.newPlainText("text1", "text2")
-        binding.saveAndBack.setOnDragListener { v, event ->
-            Log.i("Nnn", "Wants to drag")
-            true
-        }
-        binding.saveAndBack.setOnTouchListener { v, event ->
-            mover.procMove(v, event)
-        }
 
-        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
-            binding.saveAndBack.startDragAndDrop(clip, View.DragShadowBuilder(binding.saveAndBack), null, 0)
-            Log.i("Nnn", "first started")
-        } else {
-            binding.saveAndBack.startDrag(clip, View.DragShadowBuilder(binding.saveAndBack), 0, 0)
-            Log.i("Nnn", "second started")
-        }
+        val s = SideTick(binding.saveAndBack, SideTick.VERTICAL, 0)
     }
 
     inner class Mover {
-        private var dl = 0
-        private var dt = 0
-        private var dr = 0
-        private var db = 0
 
-        fun procMove(view: View, event: MotionEvent): Boolean {
-            Log.i("Nnn", "asd")
-            if (event.action == MotionEvent.ACTION_DOWN) {
-                dl = floor(event.rawX - view.left).toInt()
-                dt = floor(event.rawY - view.top).toInt()
-                dr = floor(event.rawX - view.right).toInt()
-                db = floor(event.rawY - view.bottom).toInt()
-
-                Log.i("Nnab", "Deltas: $dr, $dt")
-                Log.i("Nnabc", "Constrs: ${view.right - view.left}, ${view.bottom - view.top}")
-            } else if (event.action == MotionEvent.ACTION_MOVE) {
-                Log.i("Nnab", "Event: ${event.rawX}, ${event.rawY}")
-                view.left = floor(event.rawX - dl).toInt()
-                view.top = floor(event.rawY - dt).toInt()
-                view.right = floor(event.rawX - dr).toInt()
-                view.bottom = floor(event.rawY - db).toInt()
-            }
-            Log.i("Nnab", "$event")
-            return true
-        }
     }
 }
