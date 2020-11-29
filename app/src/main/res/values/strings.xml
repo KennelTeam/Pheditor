@@ -6,4 +6,7 @@
     <string name="info_data">This is some information about this app. It is made by the Kennel team™ of three pЁses and two legendary pЁses. We hope you will enjoy using this app.</string>
     <string name="choose_image">Choose image</string>
     <string name="chosen_image_desc">Image that you have chosen</string>
+    <string name="save_image">Save</string>
+    <string name="null_image_warning">You have not chosen any image!</string>
+    <string name="folder_name">KennelPheditor</string>
 </resources>

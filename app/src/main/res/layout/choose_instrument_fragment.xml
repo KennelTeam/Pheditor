@@ -11,16 +11,16 @@
     <ImageView
         android:id="@+id/image_view"
         android:layout_width="370dp"
-        android:layout_height="500dp"
+        android:layout_height="400dp"
         android:contentDescription="@string/chosen_image_desc"
-        android:scaleType="centerCrop"
+        android:scaleType="fitCenter"
         android:src="@drawable/no_image_found_360x250"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.487"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.108" />
+        app:layout_constraintVertical_bias="0.398" />
 
     <Button
         android:id="@+id/img_pick_btn"
@@ -89,6 +89,17 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.95"
         app:srcCompat="?attr/pesButtonImage" />
+
+    <Button
+        android:id="@+id/saveButton"
+        android:layout_width="359dp"
+        android:layout_height="82dp"
+        android:text="@string/save_image"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.041" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
