@@ -34,14 +34,40 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="negative" />
+                android:text="negative"
+                android:textSize="8sp" />
 
             <Button
                 android:id="@+id/button_f2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="change colors" />
+                android:text="change colors"
+                android:textSize="8sp" />
+
+            <Button
+                android:id="@+id/button_f3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="dark"
+                android:textSize="8sp" />
+
+            <Button
+                android:id="@+id/button_f4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="light"
+                android:textSize="8sp" />
+
+            <Button
+                android:id="@+id/button_f5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="gray scale"
+                android:textSize="8sp" />
 
         </LinearLayout>
 

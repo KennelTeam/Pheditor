@@ -10,7 +10,7 @@ import kotlin.math.floor
 
 @SuppressLint("ClickableViewAccessibility")
 class SideTick(
-    view: View,
+    val view: View,
     private val orientation: Int,
     private val id: Int) {
     private var dx = 0f
@@ -33,11 +33,9 @@ class SideTick(
             if (orientation == HORIZONTAL) {
                 Log.i("Moving", "horizontal $id")
                 nval = event.rawX - dx
-                view.x = nval
             } else {
                 Log.i("Moving", "vertical $id")
                 nval = event.rawY - dy
-                view.y = nval
             }
             emit(MoveTick(id, view, nval))
         }

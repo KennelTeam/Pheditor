@@ -33,28 +33,33 @@ class TicksManager(
     private val dDim1 = 200
     private val dDim2 = 100
     private val radius = 10f
+    private val min = 10
 
     init {
         register<MoveTick> {
             Log.i("Events", "got ev")
-            val r = Rect()
-
-            if (it.id <= 1) {
-                r.set(
-                    it.view.x.toInt() - dDim1,
-                    it.view.y.toInt() - dDim2,
-                    it.view.right + dDim1,
-                    it.view.bottom + dDim2
-                )
-            } else {
-                r.set(
-                    it.view.x.toInt() - dDim2,
-                    it.view.y.toInt() - dDim1,
-                    it.view.right + dDim2,
-                    it.view.bottom + dDim1
-                )
+            when (it.id) {
+                0 -> {
+                    if (it.dim < ticks[1].view.y - min && it.dim >= stY - dim2/2) {
+                        it.view.y = it.dim
+                    }
+                }
+                1 -> {
+                    if (it.dim > ticks[0].view.y + min && it.dim <= stY + stHei - dim2/2) {
+                        it.view.y = it.dim
+                    }
+                }
+                2 -> {
+                    if (it.dim < ticks[3].view.x - min && it.dim >= stX - dim2/2) {
+                        it.view.x = it.dim
+                    }
+                }
+                3 -> {
+                    if (it.dim > ticks[2].view.x + min && it.dim <= stX + stWid - dim2/2) {
+                        it.view.x = it.dim
+                    }
+                }
             }
-            binding.cropMainHandler.touchDelegate = TouchDelegate(r, it.view)
         }
         generateTicks()
     }
@@ -133,9 +138,9 @@ class TicksManager(
         ticks.add(SideTick(t2, SideTick.HORIZONTAL, 2))
         ticks.add(SideTick(t3, SideTick.HORIZONTAL, 3))
 
-        emit(MoveTick(0, t0, 0f))
-        emit(MoveTick(1, t1, 0f))
-        emit(MoveTick(2, t2, 0f))
-        emit(MoveTick(3, t3, 0f))
+//        emit(MoveTick(0, t0, t0.y))
+//        emit(MoveTick(1, t1, t1.y))
+//        emit(MoveTick(2, t2, t2.x))
+//        emit(MoveTick(3, t3, t2.x))
     }
 }
