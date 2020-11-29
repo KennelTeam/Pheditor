@@ -13,5 +13,6 @@ fun emit(event: Event) {
         func(event)
     }
 }
+
 var listenersList = mutableListOf<(Event) -> Unit>()
 open class Event {}
