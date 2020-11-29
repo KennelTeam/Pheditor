@@ -1,4 +1,0 @@
-package filters
-
-class ImageFilter {
-}
