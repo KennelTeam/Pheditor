@@ -43,11 +43,7 @@ class StickersFragment: Fragment() {
 
     private fun addNewSticker(img: Int) {
         val imageView = ImageView(this.context)
-        imageView.layoutParams =
-                LinearLayout.LayoutParams(150, 150)
-//                LinearLayout.LayoutParams(binding.scrollLayout.width, binding.scrollLayout.width)
-//                binding.stickersLayout.layoutParams
-        println("ttttttttttttt  ${binding.stickersLayout.layoutParams.width}     ${binding.stickersLayout.layoutParams.height}")
+        imageView.layoutParams = LinearLayout.LayoutParams(150, 150)
         imageView.setImageResource(img)
         binding.stickersLayout.addView(imageView)
     }
