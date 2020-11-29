@@ -3,10 +3,13 @@ package kennel.pheditor.screens.crop
 import android.annotation.SuppressLint
 import android.content.ClipData
 import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+
 import android.util.Log
 import android.view.*
-import android.widget.RelativeLayout
-import androidx.core.view.marginBottom
+
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import kennel.pheditor.R

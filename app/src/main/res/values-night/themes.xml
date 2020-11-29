@@ -13,6 +13,11 @@
         <item name="colorOnSecondary">@color/dark</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+
+        <item name="cropButtonImage">@drawable/crop_icon_d</item>
+        <item name="pesButtonImage">@drawable/pes_icon_d</item>
+        <item name="filterButtonImage">@drawable/filter_icon_d</item>
+        <item name="drawButtonImage">@drawable/draw_icon_d</item>
         <!-- Customize your theme here. -->
     </style>
 </resources>
