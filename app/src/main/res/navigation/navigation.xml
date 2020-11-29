@@ -3,16 +3,55 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation"
-    app:startDestination="@id/stickersFragment">
-
+    app:startDestination="@id/titleFragment">
     <fragment
         android:id="@+id/cropFragment"
         android:name="kennel.pheditor.screens.crop.CropFragment"
         android:label="CropFragment"
         tools:layout="@layout/crop_fragment"/>
     <fragment
-        android:id="@+id/stickersFragment"
-        android:name="kennel.pheditor.stickers.StickersFragment"
-        android:label="StickersFragment"
-        tools:layout="@layout/stickers_fragment"/>
+        android:id="@+id/imageFilter"
+        android:name="kennel.pheditor.filters.ImageFilter"
+        android:label="ImageFilter"
+        tools:layout="@layout/image_filter"/>
+    <fragment
+        android:id="@+id/stickerFragment"
+        android:name="kennel.pheditor.stickers.Stickers"
+        android:label="StickerFragment"
+        tools:layout="@layout/stickers"/>
+
+    <fragment
+        android:id="@+id/chooseInstrument"
+        android:name="kennel.pheditor.title.ChooseInstrumentFragment"
+        android:label="ChooseInstrument"
+        tools:layout="@layout/choose_instrument_fragment">
+        <action
+            android:id="@+id/action_chooseInstrument_to_cropFragment"
+            app:destination="@id/cropFragment" />
+        <action
+            android:id="@+id/action_chooseInstrument_to_stickerFragment"
+            app:destination="@id/stickerFragment" />
+        <action
+            android:id="@+id/action_chooseInstrument_to_imageFilter"
+            app:destination="@id/imageFilter" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/titleFragment"
+        android:name="kennel.pheditor.title.TitleFragment"
+        android:label="TitleFragment"
+        tools:layout="@layout/title_fragment">
+        <action
+            android:id="@+id/action_titleFragment_to_infoFragment"
+            app:destination="@id/infoFragment" />
+        <action
+            android:id="@+id/action_titleFragment_to_chooseInstrument"
+            app:destination="@id/chooseInstrument" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/infoFragment"
+        android:name="kennel.pheditor.title.InfoFragment"
+        android:label="InfoFragment"
+        tools:layout="@layout/info_fragment"/>
 </navigation>
