@@ -45,16 +45,30 @@ class ChooseInstrumentFragment: Fragment() {
 
         val cropButton : ImageButton = binding.cropButton
         cropButton.setOnClickListener {
-            findNavController().navigate(R.id.action_chooseInstrument_to_cropFragment)
+            changeFragment(R.id.action_chooseInstrument_to_cropFragment)
         }
 
         val sticker : ImageButton = binding.pesButton
         sticker.setOnClickListener {
-            findNavController().navigate(R.id.action_chooseInstrument_to_stickerFragment)
+            changeFragment(R.id.action_chooseInstrument_to_stickerFragment)
+        }
+
+        val imageFilterButton : ImageButton = binding.filterButton
+        imageFilterButton.setOnClickListener {
+            changeFragment(R.id.action_chooseInstrument_to_imageFilter)
         }
 
 
         return binding.root
+    }
+
+    private fun changeFragment(actionId : Int){
+        if(GlobalVars.image != null){
+            findNavController().navigate(actionId)
+        } else {
+            val infoToast : Toast = Toast.makeText(context, "You have not uploaded any image!", Toast.LENGTH_LONG)
+            infoToast.show()
+        }
     }
 
     private fun pickImage(){
