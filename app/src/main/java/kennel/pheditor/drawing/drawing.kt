@@ -1,52 +1,80 @@
-package com.example.myapplication
+package kennel.pheditor.drawing
 
 import android.graphics.Bitmap
 import android.graphics.Canvas
 import android.graphics.Color
 import android.graphics.Paint
+import android.graphics.drawable.BitmapDrawable
 import android.os.Bundle
-import android.view.KeyEvent
+import android.util.Log
+import android.view.LayoutInflater
 import android.view.MotionEvent
-import android.view.View.MeasureSpec
-import android.widget.Button
+import android.view.View
+import android.view.ViewGroup
 import android.widget.ImageView
-import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
+import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
+import kennel.pheditor.DrawableHelper
+import kennel.pheditor.GlobalVars
+import kennel.pheditor.R
+import kennel.pheditor.databinding.DrawingFragmentBinding
 
 
-var bmap: Bitmap = Bitmap.createBitmap(1000, 1000, Bitmap.Config.RGB_565)
 var lastX: Float = 0.toFloat();
 var lastY: Float = 0.toFloat();
 
-class MainActivity : AppCompatActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+class DrawingFragment : Fragment() {
+    private lateinit var binding: DrawingFragmentBinding
 
-        val color_green: Button = findViewById(R.id.but_green)
-        color_green.setOnClickListener {
-            val toast = Toast.makeText(this, "POOP!", Toast.LENGTH_SHORT)
-            toast.show()
-        }
-        val bton: ImageView = findViewById(R.id.imageView)
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        binding = DataBindingUtil.inflate(
+            inflater,
+            R.layout.drawing_fragment,
+            container,
+            false
+        )
+
+
+        val bton: ImageView = binding.imageView
         //bmap = (bton.getDrawable() as BitmapDrawable).bitmap
+        binding.imageView.setImageDrawable(GlobalVars.image)
+        bton?.setOnTouchListener { v, event ->  onTouchEvent(event)}
+
+        return binding.root
     }
-    override fun onTouchEvent(e: MotionEvent): Boolean {
-        val bton: ImageView = findViewById(R.id.imageView)
+
+
+    fun onTouchEvent(e: MotionEvent): Boolean {
+        val bton: ImageView = binding.imageView
         val paint: Paint = Paint()
         paint.setColor(Color.GREEN) // установим зеленый цвет
         paint.setStyle(Paint.Style.FILL)
         paint.strokeWidth = 10.toFloat()
         if (e.action == 0) {
             lastX = e.x - bton.x
-            lastY = e.y - bton.y - bton.height / 4
+            lastY = e.y - bton.y// - bton.height / 4
         }
-        val cvas: Canvas = Canvas(bmap)
-        cvas.drawLine(lastX, lastY,e.x - bton.x, e.y - bton.y - bton.height / 4, paint)
+
+        val bitmap = DrawableHelper.drawableToBitmap(GlobalVars.image)!!.copy(Bitmap.Config.ARGB_8888, true)
+
+        val cvas = Canvas(bitmap)
+        cvas.drawLine(lastX, lastY,e.x - bton.x, e.y - bton.y, paint)
+
+        
+        Log.i("TEST", e.x.toString() + " " + e.y.toString() + " " + lastX.toString() + " " + lastY.toString())
+
         lastX = e.x - bton.x
-        lastY = e.y - bton.y - bton.height / 4
+        lastY = e.y - bton.y
         //cvas.drawCircle(e.x - bton.x, e.y - bton.y - bton.height / 2, 10.toFloat(), paint)
-        bton.setImageBitmap(bmap)
+        //GlobalVars.image!!.draw(cvas)
+
+        GlobalVars.image = BitmapDrawable(resources, bitmap)
+        binding.imageView.setImageDrawable(GlobalVars.image)
+
         return true
     }
 }
