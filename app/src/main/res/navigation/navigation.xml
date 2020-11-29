@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation"
     app:startDestination="@id/imageFilter2">
-
     <fragment
         android:id="@+id/cropFragment"
         android:name="kennel.pheditor.screens.crop.CropFragment"
@@ -14,4 +13,36 @@
         android:id="@+id/imageFilter2"
         android:name="kennel.pheditor.filters.ImageFilter"
         android:label="ImageFilter" />
+    <fragment
+        android:id="@+id/chooseInstrument"
+        android:name="kennel.pheditor.title.ChooseInstrumentFragment"
+        android:label="ChooseInstrument"
+        tools:layout="@layout/choose_instrument_fragment">
+        <action
+            android:id="@+id/action_chooseInstrument_to_cropFragment"
+            app:destination="@id/cropFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/titleFragment"
+        android:name="kennel.pheditor.title.TitleFragment"
+        android:label="TitleFragment"
+        tools:layout="@layout/title_fragment">
+        <action
+            android:id="@+id/action_titleFragment_to_infoFragment"
+            app:destination="@id/infoFragment" />
+        <action
+            android:id="@+id/action_titleFragment_to_chooseInstrument"
+            app:destination="@id/chooseInstrument" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/infoFragment"
+        android:name="kennel.pheditor.title.InfoFragment"
+        android:label="InfoFragment"
+        tools:layout="@layout/info_fragment">
+        <action
+            android:id="@+id/action_infoFragment_to_titleFragment"
+            app:destination="@id/titleFragment" />
+    </fragment>
 </navigation>
