@@ -18,6 +18,7 @@ class SideTick(
 
     init {
         view.setOnTouchListener { v, event ->
+            Log.i("Catchers", "Wants to move $id")
             procMove(v, event)
         }
     }
@@ -30,13 +31,15 @@ class SideTick(
         } else if (event.action == MotionEvent.ACTION_MOVE) {
             val nval: Float
             if (orientation == HORIZONTAL) {
+                Log.i("Moving", "horizontal $id")
                 nval = event.rawX - dx
                 view.x = nval
             } else {
+                Log.i("Moving", "vertical $id")
                 nval = event.rawY - dy
                 view.y = nval
             }
-            //emit(MoveTick(id, view, a, b))
+            emit(MoveTick(id, view, nval))
         }
         return true
     }

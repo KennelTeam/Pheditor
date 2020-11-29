@@ -15,7 +15,6 @@ import kotlin.math.floor
 
 class CropFragment: Fragment() {
     private lateinit var binding: CropFragmentBinding
-    private val mover = Mover()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -35,10 +34,11 @@ class CropFragment: Fragment() {
     private fun mainSetup() {
         val clip = ClipData.newPlainText("text1", "text2")
 
-        val s = SideTick(binding.saveAndBack, SideTick.VERTICAL, 0)
-    }
-
-    inner class Mover {
-
+        //val s = SideTick(binding.saveAndBack, SideTick.VERTICAL, 0)
+        val man = TicksManager(this.requireContext(), binding,
+        100f, 100f,
+        300f, 800f,
+        200, 20,
+        R.color.dark_teal_2)
     }
 }
