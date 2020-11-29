@@ -3,14 +3,16 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation"
-    app:startDestination="@id/titleFragment">
-
+    app:startDestination="@id/imageFilter2">
     <fragment
         android:id="@+id/cropFragment"
         android:name="kennel.pheditor.screens.crop.CropFragment"
         android:label="CropFragment"
         tools:layout="@layout/crop_fragment"/>
-
+    <fragment
+        android:id="@+id/imageFilter2"
+        android:name="kennel.pheditor.filters.ImageFilter"
+        android:label="ImageFilter" />
     <fragment
         android:id="@+id/stickerFragment"
         android:name="kennel.pheditor.stickers.Stickers"
