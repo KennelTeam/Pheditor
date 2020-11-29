@@ -21,6 +21,7 @@ import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import kennel.pheditor.DrawableHelper
 import kennel.pheditor.GlobalVars
 import kennel.pheditor.R
 import kennel.pheditor.databinding.ChooseInstrumentFragmentBinding
@@ -75,7 +76,7 @@ class ChooseInstrumentFragment: Fragment() {
                 try {
                     val infoToast : Toast = Toast.makeText(context, "Saving image...", Toast.LENGTH_LONG)
                     infoToast.show()
-                    val bitmap : Bitmap = drawableToBitmap(GlobalVars.image)!!
+                    val bitmap : Bitmap = DrawableHelper.drawableToBitmap(GlobalVars.image)!!
                     saveImage(bitmap, resources.getString(R.string.folder_name))
                     val successToast : Toast = Toast.makeText(context, "Image successfully saved", Toast.LENGTH_LONG)
                     successToast.show()
@@ -142,41 +143,6 @@ class ChooseInstrumentFragment: Fragment() {
             } catch (e: Exception) {
                 e.printStackTrace()
             }
-        }
-    }
-
-
-    private fun drawableToBitmap(drawable: Drawable?) : Bitmap? {
-        if(drawable != null) {
-            var bitmap: Bitmap? = null
-
-            if (drawable is BitmapDrawable) {
-                val bitmapDrawable = drawable
-                if (bitmapDrawable.bitmap != null) {
-                    return bitmapDrawable.bitmap
-                }
-            }
-
-            bitmap = if (drawable.intrinsicWidth <= 0 || drawable.intrinsicHeight <= 0) {
-                Bitmap.createBitmap(
-                    1,
-                    1,
-                    Bitmap.Config.ARGB_8888
-                ) // Single color bitmap will be created of 1x1 pixel
-            } else {
-                Bitmap.createBitmap(
-                    drawable.intrinsicWidth,
-                    drawable.intrinsicHeight,
-                    Bitmap.Config.ARGB_8888
-                )
-            }
-
-            val canvas = Canvas(bitmap)
-            drawable.setBounds(0, 0, canvas.getWidth(), canvas.getHeight())
-            drawable.draw(canvas)
-            return bitmap
-        } else {
-            return null
         }
     }
 
