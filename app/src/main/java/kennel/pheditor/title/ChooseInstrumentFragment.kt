@@ -46,6 +46,11 @@ class ChooseInstrumentFragment: Fragment() {
             findNavController().navigate(R.id.action_chooseInstrument_to_cropFragment)
         }
 
+        val sticker : ImageButton = binding.pesButton
+        sticker.setOnClickListener {
+            findNavController().navigate(R.id.action_chooseInstrument_to_stickerFragment)
+        }
+
 
         return binding.root
     }

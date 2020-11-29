@@ -12,6 +12,12 @@
         tools:layout="@layout/crop_fragment"/>
 
     <fragment
+        android:id="@+id/stickerFragment"
+        android:name="kennel.pheditor.stickers.Stickers"
+        android:label="StickerFragment"
+        tools:layout="@layout/stickers"/>
+
+    <fragment
         android:id="@+id/chooseInstrument"
         android:name="kennel.pheditor.title.ChooseInstrumentFragment"
         android:label="ChooseInstrument"
@@ -19,6 +25,9 @@
         <action
             android:id="@+id/action_chooseInstrument_to_cropFragment"
             app:destination="@id/cropFragment" />
+        <action
+            android:id="@+id/action_chooseInstrument_to_stickerFragment"
+            app:destination="@id/stickerFragment" />
     </fragment>
 
     <fragment
